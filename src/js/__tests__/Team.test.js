@@ -18,7 +18,6 @@ const user2 = {
   defence: 10,
 };
 
-
 test('Добавление одного персонажа', () => {
   const expectedResult = new Set([user1]);
   const team = new Team();
