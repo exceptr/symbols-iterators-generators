@@ -1,6 +1,8 @@
-export default class Team {
+export default class TeamGenerator {
   constructor() {
     this.members = new Set();
+    this.from = 0;
+    this.to = 0;
   }
 
   add(character) {
@@ -19,18 +21,10 @@ export default class Team {
     return Array.from(this.members);
   }
 
-  [Symbol.iterator]() {
-    const membersArr = this.toArray();
-    // this.to = this.membersArr.length;
-    let currentTeam = 0;
-    return {
-      next() {
-        if (currentTeam < membersArr.length) {
-          // eslint-disable-next-line no-plusplus
-          return { value: membersArr[currentTeam++], done: false };
-        }
-        return { value: undefined, done: true };
-      },
-    };
+  * [Symbol.iterator]() {
+    this.membersArr = this.toArray();
+    for (const member of this.members) {
+      yield member;
+    }
   }
 }

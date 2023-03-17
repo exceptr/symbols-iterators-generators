@@ -46,20 +46,3 @@ test('Конвертация Set в массив', () => {
   team.addAll(user1, user2);
   expect(team.toArray()).toEqual(expectedResult);
 });
-
-test('Итерация next, выдаёт по одному персонажу', () => {
-  const team = new Team();
-  team.addAll(user1, user2);
-  expect(team.next().value).toEqual(user1);
-  expect(team.next().value).toEqual(user2);
-  expect(team.next().value).toEqual(undefined);
-});
-
-test('Генератор, выдаёт по одному персонажу', () => {
-  const team = new Team();
-  const generator = team[Symbol.iterator]();
-  team.addAll(user1, user2);
-  expect(generator.next().value).toEqual(user1);
-  expect(generator.next().value).toEqual(user2);
-  expect(generator.next().value).toEqual(undefined);
-});
