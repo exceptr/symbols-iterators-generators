@@ -23,7 +23,7 @@ export default class TeamGenerator {
 
   * [Symbol.iterator]() {
     this.membersArr = this.toArray();
-    for (const member of this.members) {
+    for (const member of this.membersArr) {
       yield member;
     }
   }
